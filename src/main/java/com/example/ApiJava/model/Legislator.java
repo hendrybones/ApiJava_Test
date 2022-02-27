@@ -1,9 +1,13 @@
 package com.example.ApiJava.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Date;
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Legislator {
     @Id
         private String cid;
@@ -21,13 +25,10 @@ public class Legislator {
     public Legislator() {
     }
 
-    public Legislator(String cid,
-                      String firstlast,
-                      String lastname,
-                      String party,
-                      String office, String gender,
-                      String first_elected, String phone,
-                      String votesmart_id, String feccandid, Date birthdate) {
+    public Legislator(String cid, String firstlast, String lastname, String party, String office, String gender, String first_elected, String phone,
+                      String votesmart_id,
+                      String feccandid,
+                      Date birthdate) {
             this.cid = cid;
             this.firstlast = firstlast;
             this.lastname = lastname;

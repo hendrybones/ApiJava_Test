@@ -4,6 +4,7 @@ import com.example.ApiJava.model.Legislator;
 import com.example.ApiJava.repository.LegislatorRepository;
 import com.example.ApiJava.service.LegislatorService;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +27,7 @@ public class ApiJavaApplication {
 		return args -> {
 			//read and write to db
 			ObjectMapper mapper = new ObjectMapper();
+			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 			TypeReference<List<Legislator>> typeReference = new TypeReference<List<Legislator>>(){};
 			InputStream inputStream = TypeReference.class.getResourceAsStream("/json/legislator.json");
 			try {
